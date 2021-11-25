@@ -1,13 +1,16 @@
 <?php
 namespace App\Services;
 
+use Illuminate\Support\Facades\App;
 use App\Actions\Fortify\CreateNewUser;
+
 class AddNewUserService
 {
     public function createNewUser(array $input)
     {
-        $new_user = $createNewUserAction->create($input);
-        return $new_user;
+        $creater = App::make(CreateNewUser::class);
+        return $creater->create($input);
+
     }
 
 }

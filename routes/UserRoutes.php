@@ -5,7 +5,7 @@ use App\Actions\Jetstream\DeleteUser;
 use Illuminate\Support\Facades\Route;
 use App\Actions\Fortify\CreateNewUser;
 use App\Contract\UserRepositoryContract;
-
+use App\Services\DeleteUserService;
 
 Route::prefix('users')->group(function(){
     Route::get('all',function (UserRepositoryContract $userRepository)
@@ -39,7 +39,7 @@ Route::prefix('user')->group(function(){
 
     });
 
-    Route::get('/{id}/delete', function(UserRepositoryContract $userRepository, DeleteUser $deleter, $id)
+    Route::get('/{id}/delete', function(UserRepositoryContract $userRepository,DeleteUserService $deleter,  $id)
     {
         $user = $userRepository->getUserModel($id);
 
